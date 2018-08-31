@@ -17,6 +17,7 @@
 var express = require("express");
 var exphbs = require("express-handlebars");
 var bodyparser = require("body-parser");
+var path = require("path");
 
 // Instantiate the express app
 var app = express();
@@ -33,8 +34,8 @@ app.set("view engine", "handlebars");
 
 
 // Home Route
-app.get("/", function(req, res){
-    res.sendFile(path.join(__dirname, "home.html");
+app.get("/", function(req, res){                        // Possibly add handlebar functionality
+    res.sendFile(path.join(__dirname, "home.html"));
 });
 
 
