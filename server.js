@@ -25,16 +25,9 @@ var app = express();
 // Set the PORT and prep for Heroku deployment
 var PORT = process.env.PORT || 8080;
 
-// Set up handlebars
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
-
-
-
-
 
 // Home Route
-app.get("/", function(req, res){                        // Possibly add handlebar functionality
+app.get("/", function(req, res){
     res.sendFile(path.join(__dirname, "home.html"));
 });
 
@@ -43,3 +36,5 @@ app.get("/", function(req, res){                        // Possibly add handleba
 app.listen(PORT, function(){
     console.log("Server listening on: http://localhost:" + PORT);
 });
+
+
