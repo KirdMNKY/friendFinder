@@ -10,12 +10,11 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <link rel="icon" href="../../assets/images/friendFinder.png" sizes="16x16" type="image/png">
-    <script src="../../server.js" type="text/javascript"></script>
+    <link rel="icon" href="assets/images/FriendFinder.PNG" sizes="16x16" type="image/png">
 </head>
 <body>
     <div class="jumbotron">
-        <h1 class="display-4"><img src="../../assets/images/friendFinder.png">Friend Finder</h1>
+        <h1 class="display-4"><img src="assets/images/FriendFinder.PNG" runat="server">Friend Finder</h1>
         <p class="lead">Find new friends who share the same interests at you!</p>
         <hr class="my-4">
         <p>Click on the button below to get started.</p>
@@ -23,11 +22,11 @@
       </div>
 
       <script type="text/javascript">
-      // Survey button click
-      $("#survey").on("click", function(){
-        app.get("/survey", function(req, res){
-        res.sendFile(path.join(__dirname, "survey.html"));
-    });
+    //   // Survey button click
+    //   $("#survey").on("click", function(){
+    //     app.get("/survey", function(req, res){
+    //     res.sendFile(path.join(__dirname, "survey.html"));
+    // });
 });
       </script>
 
