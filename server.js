@@ -49,9 +49,13 @@ app.get("/api/friends", function(req, res){
     res.sendFile(path.join(__dirname, "/app/data/friends.js"));
 });
 
-var friends = require("data/friends.js");
+
+
+var friends = require("./app/data/friends.js");
 // Collect Info
 app.post("/api/friends", function(req,res){
+    console.log("button clickec");
+    res.json(req.body);
     var friend = req.body;
     console.log(friend.scores);
     // Compare user score with friends
