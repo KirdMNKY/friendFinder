@@ -7,6 +7,8 @@
 // // Instantiate the express app
 // var app = express();
 
+module.exports = function(app){
+
 // Routes
 // GET /api/friends to access data
 app.get("/api/friends", function(req, res){
@@ -16,15 +18,46 @@ app.get("/api/friends", function(req, res){
 
 // Collect Info
 
-// POST /api/friends to write data
- // AJAX post the data to the friends API.
- app.post("/api/friends", userData, function(data) {
 
-    // Grab the result from the AJAX post so that the best match's name and photo are displayed.
-    $("#match-name").text(data.name);
-    $("#match-img").attr("src", data.photo);
+require("./app/routes/apiRoutes.js")(app);
 
-    // Show the modal with the best match
-    $("#results-modal").modal("toggle");
+var friends = require("./app/data/friends.js");
+// Collect Info
+app.post("/api/friends", function(req,res){
+    console.log("button clickec");
+    res.json(req.body);
+    var friend = req.body;
+    console.log(friend.scores);
+    // Compare user score with friends
+    var newFriendScores = req.body.scores;
+    var scoresArray = [];
+    var friendCount = 0;
+    var bestMatch = 0;
 
+    // Check all current friends
+    for(var i=0; i<friends.length; i++){
+      var scoresDiff = 0;
+      // Compare scores
+      for(var j=0; j<newFriendScores.length; j++){
+        scoresDiff += (Math.abs(parseInt(friends[i].scores[j]) - parseInt(newFriendScores[j])));
+      }
+
+      // Add results
+      scoresArray.push(scoresDiff);
+    }
+
+    // Look for best match
+    for(var i=0; i<scoresArray.length; i++){
+      if(scoresArray[i] <= scoresArray[bestMatch]){
+        bestMatch = i;
+      }
+    }
+
+    //return bestMatch data
+    var bff = friends[bestMatch];
+    res.json(bff);
+
+    //pushes new submission into the friendsList array
+    friends.push(req.body);
   });
+}

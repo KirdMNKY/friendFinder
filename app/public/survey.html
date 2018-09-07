@@ -248,14 +248,8 @@
       };
 
       // AJAX post the data to the friends API.
-      // $.post("/api/friends", userData, function(data) {
-            // Send the POST request.
-    $.ajax("/api/friends", {
-        type: "POST",
-        data: userData
-      }).then(
-        function() {
-          console.log("created new friend");
+      $.post("/api/friends", userData, function(data) {
+
 
 
         // Grab the result from the AJAX post so that the best match's name and photo are displayed.

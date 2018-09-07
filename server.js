@@ -49,7 +49,10 @@ app.get("/api/friends", function(req, res){
     res.sendFile(path.join(__dirname, "/app/data/friends.js"));
 });
 
+// Collect Info
 
+
+//require("./app/routes/apiRoutes.js")(app);
 
 var friends = require("./app/data/friends.js");
 // Collect Info
@@ -90,8 +93,7 @@ app.post("/api/friends", function(req,res){
     //pushes new submission into the friendsList array
     friends.push(req.body);
   });
-
-
+}
 
 // Activate localhost server
 app.listen(PORT, function(){
